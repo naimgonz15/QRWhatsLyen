@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyen Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilo general */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ccefff, #0066cc);
+        }
+
+        /* Contenedor principal */
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        /* Estilo del logo */
+        .logo {
+            width: 140px;
+            margin-bottom: 20px;
+        }
+
+        /* Título */
+        .qr-container h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo del código QR */
+        canvas {
+            margin-bottom: 20px;
+        }
+
+        /* Estilo del enlace */
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        p a {
+            color: #29abe2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        p a:hover {
+            color: #216f96;
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <!-- Logo -->
+        <img src="logotipo-lyen-consulting.jpg" alt="Logo de Lyen Consulting" class="logo">
+        
+        <!-- Título -->
+        <h1>Escanea el código para solicitar más detalles</h1>
+        
+        <!-- Código QR -->
+        <canvas id="qr-code"></canvas>
+
+        <!-- Enlace alternativo -->
+        <!--<p>Haz clic <a href="https://wa.me/+5215548832292?text=Hola,%20quiero%20más%20detalles%20sobre%20la%20información.%20¿Podrías%20ayudarme?">aquí</a> si prefieres abrir WhatsApp directamente.</p>-->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        // Generar el código QR con un tamaño más grande
+        var qr = new QRious({
+            element: document.getElementById('qr-code'),
+            value: 'https://wa.me/+5215548832292?text=Hola,%20quiero%20saber%20m%C3%A1s%20detalles%20de%20ustedes.',
+            size: 250,
+        });
+
+        // Añadir icono de WhatsApp en el centro
+        var ctx = qr.canvas.getContext('2d');
+        var img = new Image();
+        img.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg';
+        img.onload = function() {
+            ctx.drawImage(img, (qr.canvas.width - 60) / 2, (qr.canvas.height - 60) / 2, 60, 60);
+        };
+    </script>
+</body>
+</html>
